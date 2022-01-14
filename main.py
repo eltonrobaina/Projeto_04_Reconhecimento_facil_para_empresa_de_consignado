@@ -95,10 +95,13 @@ class Ui_MainWindow(object):
         self.lb_titulo_Teste.setText(_translate("MainWindow", "Imagem Teste"))
         self.bt_predizer.setText(_translate("MainWindow", "Predizer"))
         self.lb_resultadoPredicao.setText(_translate("MainWindow", "Resultado Predição:"))
-import anthony_rc
-import lebron1_rc
-import lebron2_rc
-import semimagem_rc
+
+
+### Imagens Sistema ###
+import anthony
+import lebron1
+import lebron2
+import semimagem
 
 
 if __name__ == "__main__":
