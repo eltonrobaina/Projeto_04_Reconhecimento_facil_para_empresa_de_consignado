@@ -10,6 +10,20 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
+from tkinter import Tk
+from tkinter.filedialog import askopenfilename
+import cv2
+
+### Face_recognition ###
+# First 'pip install cmake'
+# second 'pip install face_recognition'
+
+import face_recognition
+
+
+
+
+
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -95,6 +109,52 @@ class Ui_MainWindow(object):
         self.lb_titulo_Teste.setText(_translate("MainWindow", "Imagem Teste"))
         self.bt_predizer.setText(_translate("MainWindow", "Predizer"))
         self.lb_resultadoPredicao.setText(_translate("MainWindow", "Resultado Predição:"))
+
+
+
+        ### Botoes Sistema ###
+        self.bt_imagemTreino.clicked.connect(self.imagemTreino)
+        self.bt_imagemTeste.clicked.connect(self.imagemTeste)
+        #self.bt_predizer.clicked.connect(self.predizer)
+
+
+    ### Funcoes do sistema ###
+
+    ## Carrega imagem Treino##
+    def imagemTreino(self):
+        Tk().withdraw()
+        path = askopenfilename()
+        print('path: ', path)
+        arquivo = path.split('Imagens/')
+        print('arquivo: ', arquivo)
+        listaTreino = arquivo[1].split('.')
+        print('listaTreino: ', listaTreino)
+        global imgTreino
+        imgTreino = listaTreino[0]
+        urlTreino = 'image: url(:/' + imgTreino + '/Imagens/' + imgTreino + '.png)'
+        print('urlTreino: ', urlTreino)
+        self.lb_imagemTreino.setStyleSheet(urlTreino)
+
+    ## Carrega imagem Teste##
+    def imagemTeste(self):
+        Tk().withdraw()
+        path = askopenfilename()
+        print('path: ', path)
+        arquivo = path.split('Imagens/')
+        print('arquivo: ', arquivo)
+        listaTeste = arquivo[1].split('.')
+        print('listaTeste: ', listaTeste)
+        global imgTeste
+        imgTeste = listaTeste[0]
+        urlTeste = 'image: url(:/' + imgTeste + '/Imagens/' + imgTeste + '.png)'
+        print('urlTeste: ', urlTeste)
+        self.lb_imagemTeste.setStyleSheet(urlTeste)
+
+
+
+
+
+
 
 
 ### Imagens Sistema ###
